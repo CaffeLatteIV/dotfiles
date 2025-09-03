@@ -41,7 +41,7 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 # History
-HISTSIZE=5000
+HISTSIZE=50000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -66,11 +66,11 @@ alias vim='nvim'
 alias c='clear'
 
 
-
 # Export PATH$
 export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 # eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/bubbles.omp.json)"
@@ -78,7 +78,9 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Shell integrations
 # source <(fzf --zsh)
-eval "$(fzf --zsh)"
+#eval "$(fzf --zsh)"
 #eval "$(zoxide init --cmd cd zsh)"
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

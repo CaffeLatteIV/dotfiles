@@ -77,15 +77,21 @@ export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/u
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# oh my posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 # eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/bubbles.omp.json)"
 
 
 # Shell integrations
 # source <(fzf --zsh)
-eval "$(fzf --zsh)"
-#eval "$(zoxide init --cmd cd zsh)"
+#eval "$(fzf --zsh)"
+#eval "$(pyenv init - zsh)"
+#eval "$(pyenv virtualenv-init -)"
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

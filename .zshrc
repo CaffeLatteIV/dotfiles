@@ -18,7 +18,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 # Add in snippets
-# zinit snippet OMZP::tmux
+#zinit snippet OMZP::tmux
 zinit snippet OMZP::debian
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -33,12 +33,17 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-
+#locale
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+# Enable Ctrl+arrow key bindings for word jumping
+bindkey '^[[1;5C' forward-word     # Ctrl+right arrow
+bindkey '^[[1;5D' backward-word    # Ctrl+left arrow
 
 # History
 HISTSIZE=50000

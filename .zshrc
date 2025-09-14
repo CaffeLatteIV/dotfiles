@@ -89,9 +89,9 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Shell integrations
 # source <(fzf --zsh)
-#eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"
 #eval "$(pyenv init - zsh)"
 #eval "$(pyenv virtualenv-init -)"
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

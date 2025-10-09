@@ -73,10 +73,9 @@ alias mu='distrobox enter --root kmuscolo'
 
 
 # Export PATH$
-export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+export PATH=$PATH:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin
 # nvim
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+export EDITOR="/usr/bin/nvim"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

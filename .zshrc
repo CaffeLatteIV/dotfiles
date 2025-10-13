@@ -70,28 +70,17 @@ alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 alias mu='distrobox enter --root kmuscolo'
-
-
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lgt='lazygit'
 # Export PATH$
-export PATH=$PATH:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin
+export PATH="$HOME/.local/bin:$PATH"
+
 # nvim
 export EDITOR="/usr/bin/nvim"
+export SUDO_EDITOR="$EDITOR"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
-# oh my posh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/bubbles.omp.json)"
 
 
 # Shell integrations
-# source <(fzf --zsh)
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 eval "$(fzf --zsh)"
-#eval "$(pyenv init - zsh)"
-#eval "$(pyenv virtualenv-init -)"
-
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

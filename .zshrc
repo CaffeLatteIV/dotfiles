@@ -70,8 +70,8 @@ alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 alias mu='distrobox enter --root kmuscolo'
-alias ls='eza -lh --group-directories-first --icons=auto'
-alias lgt='lazygit'
+alias ls='eza -lh -g --group-directories-first --icons=auto'
+alias gg='lazygit'
 # Export PATH$
 export PATH="$HOME/.local/bin:$PATH"
 

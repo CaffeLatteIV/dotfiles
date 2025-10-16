@@ -71,7 +71,7 @@ alias vim='nvim'
 alias c='clear'
 alias mu='distrobox enter --root kmuscolo'
 alias ls='eza -lh -g --group-directories-first --icons=auto'
-alias gg='lazygit'
+alias gg='lazygit' 
 # Export PATH$
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -85,3 +85,5 @@ export SUDO_EDITOR="$EDITOR"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+# banner
+bash ~/dotfiles/banner.sh

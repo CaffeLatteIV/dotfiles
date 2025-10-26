@@ -77,7 +77,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # nvim
 export EDITOR="/usr/bin/nvim"
 export SUDO_EDITOR="$EDITOR"
-
+export LC_ALL=en_US.UTF-8
 
 
 # Shell integrations

@@ -1,0 +1,1 @@
+/home/caffelatte/.config/omarchy/current/theme/neovim.lua

@@ -72,7 +72,7 @@ alias mu='distrobox enter --root kmuscolo'
 alias ls='eza -lh -g --group-directories-first --icons=auto'
 alias gg='lazygit' 
 # Export PATH$
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH:/opt/nvim-linux-x86_64/bin"
 
 # nvim
 export EDITOR="/usr/bin/nvim"

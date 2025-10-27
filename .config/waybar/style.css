@@ -24,7 +24,7 @@
   animation-direction: alternate;
 }
 
-#mode, #clock, #memory, #temperature, #cpu, #custom-weather,
+#custom-spotify, #bluetooth, #mode, #clock, #memory, #temperature, #cpu, #custom-weather,
 #mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
 #battery, #custom-powermenu, #custom-cava-internal,
 #custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification{
@@ -92,7 +92,7 @@ tooltip label {
 #battery.charging{
   color: @teal;
 }
-#battery.discharging {
+#battery.discharging:not(.charging) {
   color: @mauve;
 }
 #battery.critical:not(.charging) {
@@ -102,7 +102,13 @@ tooltip label {
   color: @red;
   margin-right: 5px;
 }
-
+#bluetooth{
+  color: @blue;
+}
+/* spotify player */
+#custom-spotify{
+  color:@teal;
+}
 /* mpd */
 #mpd.paused {
   color: @subtext0;
@@ -141,7 +147,7 @@ tooltip label {
   color: @green;
 }
 #temperature {
-  color: @blue;
+  color: @red;
 }
 #backlight {
   color: @yellow;

@@ -6,9 +6,10 @@
     "custom/notification",
     "idle_inhibitor",
     "tray",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
     //"mpd",
     //"custom/cava-internal",
+    "custom/spotify"
   ],
   "modules-center": [
     "custom/weather",
@@ -18,6 +19,7 @@
   "modules-right": [
     //"disk",
     "network",
+    "bluetooth",
     "temperature",
     "memory",
     "backlight",
@@ -27,6 +29,21 @@
     // "custom/recording",
     "custom/powermenu",
   ],
+"custom/spotify": {
+   "format": " {}",
+   "max-length": 40,
+   "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh", // Script in resources folder
+    "interval":5,
+   "exec-if": "pgrep spotify"
+},
+
+"bluetooth":{
+  "format":" {}",
+  "format-connected":" {device_alias}",
+  "exec":"~/.config/waybar/scripts/bt-status.sh",
+  "on-click": "kitty bluetui",
+  "on-click-right": "~/.config/waybar/scripts/bt-toggle.sh"
+},
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -110,7 +127,7 @@
     "on-click": "sleep 0.1 && kitty ncdu",
     "tooltip-format": "{used}/{total} => {path} {percentage_used}%",
   },
-  "pulseaudio": {
+  "pulseaudio": { // works with pipewire
     "scroll-step": 1,
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 Muted",

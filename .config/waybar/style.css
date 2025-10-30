@@ -24,7 +24,7 @@
   animation-direction: alternate;
 }
 
-#custom-spotify, #bluetooth, #mode, #clock, #memory, #temperature, #cpu, #custom-weather,
+#custom-htb, #custom-spotify, #bluetooth, #mode, #clock, #memory, #temperature, #cpu, #custom-weather,
 #mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
 #battery, #custom-powermenu, #custom-cava-internal,
 #custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification{
@@ -49,7 +49,9 @@ window > box {
   background-color: @green;
 }
 */
-
+#custom-htb{
+  color:@blue;
+}
 #workspaces button {
   padding-right: .4rem;
   padding-left: .4rem;
@@ -165,12 +167,14 @@ tooltip label {
   color: @teal;
 }
 #custom-pacman{
+  padding: 0px 2px;
   color: @mauve;
 }
 #custom-scratchpad-indicator {
   color: @yellow
 }
 #custom-weather {
+  padding:0px 0.2rem 0px 0.6rem;
   color: @red;
 }
 #custom-pomodoro {

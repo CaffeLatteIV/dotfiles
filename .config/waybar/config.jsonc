@@ -12,6 +12,7 @@
     "custom/spotify"
   ],
   "modules-center": [
+    "custom/htb",
     "custom/weather",
     "custom/pacman",
     "clock",
@@ -74,7 +75,8 @@
   },
   "hyprland/workspaces": {
     "all-outputs": true,
-     "format": "{icon}",
+    "format": "{icon}",
+    "on-click":"activate",
     "format-icons": {
       "default": "",
       "1": "1",
@@ -86,8 +88,9 @@
       "7": "7",
       "8": "8",
       "9": "9",
+      "10":"10",
       "active": "󱓻"
-    },
+    }
 },
 "custom/htb": {
     "format": "󰌀 {}",

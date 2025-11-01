@@ -7,7 +7,7 @@ random_font() {
   count=${#font_list[@]}
   random=$((RANDOM % count))
   random_font=${font_list[$random]}
-  figlet -f "$font_dir/$random_font" "CaffeLatte" | lolcat
+  figlet -f "$font_dir/$random_font" -t "CaffeLatte" | lolcat
 }
 one_liner() {
   joke_file="$HOME/dotfiles/banner/jokes"

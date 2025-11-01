@@ -41,7 +41,7 @@
   "format":" {}",
   "format-connected":" {device_alias}",
   "exec":"~/.config/waybar/scripts/bt-status.sh",
-  "on-click": "kitty bluetui",
+  "on-click": "~/.config/waybar/scripts/bluetui-toggle.sh",
   "on-click-right": "~/.config/waybar/scripts/bt-toggle.sh"
 },
   "custom/notification": {
@@ -165,6 +165,11 @@
       "󰂂",
       "󱟢"
     ],
+    "events": {
+		"on-discharging-warning": "notify-send -u normal 'Low Battery'",
+		"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+		"on-charging-100": "notify-send -u normal 'Battery Full!'"
+  	},
     "format-full": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "tooltip": true,

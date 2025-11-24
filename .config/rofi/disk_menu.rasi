@@ -1,0 +1,95 @@
+/* ~/.config/rofi/disk_menu.rasi */
+configuration {
+    /* This tells Rofi to close if it loses focus or you click the background */
+    click-to-exit: true;
+}
+* {
+    /* Tokyo Night Palette */
+    bg-col:  #1a1b26;
+    bg-col-light: #1a1b26;
+    border-col: #7aa2f7;
+    selected-col: #7aa2f7;
+    blue: #7aa2f7;
+    fg-col: #c0caf5;
+    fg-col2: #565f89;
+    grey: #565f89;
+
+    width: 350px;
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 220px; /* Adjust based on how many disks you have */
+    border: 2px;
+    border-color: @border-col;
+    background-color: @bg-col;
+    border-radius: 6px;
+
+    /* Position: Top Right */
+    location: north east;
+    anchor: north east;
+    x-offset: -10px;
+    y-offset: 40px;
+}
+
+mainbox {
+    background-color: @bg-col;
+    children: [listview];
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 10px 0px 0px 10px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 10px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+    placeholder: "Disk Usage";
+    placeholder-color: @grey;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 10px;
+    columns: 1;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 8px;
+    background-color: @bg-col;
+    text-color: @fg-col;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    text-color: @selected-col; /* Dark text on Blue background */
+    border-radius: 4px;
+}

@@ -18,7 +18,6 @@
     "clock",
   ],
   "modules-right": [
-    //"disk",
     "network",
     "bluetooth",
     "temperature",
@@ -26,12 +25,13 @@
     "backlight",
     "pulseaudio",
     "battery",
-    /* "cpu", */
+    //"disk",
+    //"cpu",
     // "custom/recording",
-    "custom/powermenu",
+    "custom/powermenu"
   ],
 "custom/spotify": {
-   "format": " {}",
+   "format": "{}",
    "max-length": 40,
    "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh", // Script in resources folder
    "interval":5,
@@ -74,11 +74,12 @@
     "tooltip": false
   },
   "hyprland/workspaces": {
-    "all-outputs": true,
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": false,
+    "enable-bar-scroll": true,
     "format": "{icon}",
-    "on-click":"activate",
     "format-icons": {
-      "default": "",
       "1": "1",
       "2": "2",
       "3": "3",
@@ -88,11 +89,22 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "10":"10",
-      "active": "󱓻"
-    }
-},
-"custom/htb": {
+      "10": "10",
+      "11": "M-1",
+      "12": "M-2",
+      "13": "M-3",
+      "14": "M-4",
+      "15": "M-5",
+      "16": "M-6",
+      "17": "M-7",
+      "18": "M-8",
+    },
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "sort-by-number": true,
+  },
+  "custom/htb": {
     "format": "󰌀 {}",
     "tooltip": "IP htb",
     "exec": "ip a | grep tun0 | grep inet | cut -d / -f1 | awk '{print $2}'",
@@ -127,7 +139,7 @@
     "format": " {used}",
     "path": "/home",
     "tooltip": true,
-    "on-click": "sleep 0.1 && kitty ncdu",
+    "on-click": "python3 ~/.config/waybar/scripts/disk_menu.py | rofi -dmenu -markup-rows -theme ~/.config/rofi/disk_menu.rasi -click-to-exit -name 'rofi_disk_menu'",
     "tooltip-format": "{used}/{total} => {path} {percentage_used}%",
   },
   "pulseaudio": { // works with pipewire
@@ -255,7 +267,7 @@
     "interval": 3600,
     "exec": "wttrbar --location 'Bologna,italy' ",
     "return-type": "json"
-  }, 
+  },
   "custom/recording": {
     "exec": "$XDG_CONFIG_HOME/waybar/scripts/recording.sh status",
     "format": "{}",

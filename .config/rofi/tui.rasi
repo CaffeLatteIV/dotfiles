@@ -1,0 +1,129 @@
+/*******************************************************************************
+ * ROFI THEME - With Icons, Spaced Prompt & Separator Line
+ * Theme: Tokyo Night / Catppuccin Options
+ * Font: IBM Plex Mono (BlexMono Nerd Font)
+ *******************************************************************************/
+
+configuration {
+    font:            "BlexMono Nerd Font Medium 12";
+    show-icons:      true;
+    icon-theme:      "Papirus-Dark";
+
+    display-drun:    "";
+    display-run:     "";
+    display-window:  "";
+    drun-display-format: "{name}";
+    /* --- NAVIGATION --- */
+    /* Map Alt+j and Alt+k to Up/Down */
+    kb-row-up:      "Up,Alt+k";
+    kb-row-down:    "Down,Alt+j";
+}
+
+/* --- TOKYO NIGHT --- */
+* {
+    bg:     #1a1b26;
+    fg:     #c0caf5;
+    //accent: #7aa2f7;
+    accent: #565f89;
+    alt-bg: #24283b;
+
+    /* A slightly dimmed color for the separator line */
+    sep:    #414868;
+
+    background-color:   @bg;
+    text-color:         @fg;
+}
+
+/* --- CATPPUCCIN MOCHA (Uncomment to use) --- */
+/*
+* {
+    bg:     #1e1e2e;
+    fg:     #cdd6f4;
+    accent: #cba6f7;
+    alt-bg: #313244;
+    sep:    #45475a;
+
+    background-color:   @bg;
+    text-color:         @fg;
+}
+*/
+
+window {
+    border:             2px;
+    border-color:       @accent;
+    width:              45%;
+    /* Strict TUI Geometry */
+    anchor:             center;
+    location:           center;
+    spacing:            0;
+    children:           [ inputbar, listview ];
+}
+
+inputbar {
+    background-color:   @bg;
+    padding:            3px;
+    spacing:            3px;
+    children:           [ prompt, entry ];
+
+    /* --- THE SEPARATOR LINE --- */
+    border:             0px 0px 2px 0px; /* Bottom border only */
+    border-color:       @accent;         /* Or use @sep for a subtle line */
+    margin:             0px 0px 0px 0px;
+}
+
+prompt {
+    /* "Tab" effect: Background matches main window */
+    background-color:   @bg;
+    text-color:         @accent;
+    padding:            10px 24px;
+    font:               "BlexMono Nerd Font Bold 12";
+    vertical-align:     0.5;
+}
+
+entry {
+    background-color:   @bg;
+    placeholder:        "Search...";
+    placeholder-color:  #565f89;
+    text-color:         @fg;
+    padding:            10px 12px;
+    vertical-align:     0.5;
+}
+
+listview {
+    lines:      8;
+    columns:    1;
+    scrollbar:  false;
+
+    /* Padding pushes the first app down away from the separator line */
+    padding:    12px;
+}
+
+element {
+    padding:    10px 12px;
+    spacing:    12px;
+    orientation: horizontal;
+    children:   [ element-icon, element-text ];
+}
+
+element normal.normal {
+    text-color: @fg;
+    background-color: @bg;
+}
+
+element selected.normal {
+    background-color:   @accent;
+    text-color:         @bg;
+}
+
+element-icon {
+    size: 1.0em;
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+    background-color: transparent;
+}

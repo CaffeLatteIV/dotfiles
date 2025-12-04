@@ -69,10 +69,6 @@
     "format": "󰣇",
     "on-click": "sleep 0.1 &&  ~/.config/rofi/toggle_launcher.sh"
   },
-  "custom/cava-internal": {
-    "exec": "~/.config/waybar/Cava.sh",
-    "tooltip": false
-  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "active-only": false,
@@ -90,19 +86,21 @@
       "8": "8",
       "9": "9",
       "10": "10",
-      "11": "M-1",
-      "12": "M-2",
-      "13": "M-3",
-      "14": "M-4",
-      "15": "M-5",
-      "16": "M-6",
-      "17": "M-7",
-      "18": "M-8",
+      "11": "1",
+      "12": "2",
+      "13": "3",
+      "14": "4",
+      "15": "5",
+      "16": "6",
+      "17": "7",
+      "18": "8",
+      "19": "9",
+      "20": "20"
     },
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activate",
-    "sort-by-number": true,
+    "sort-by-number": true
   },
   "custom/htb": {
     "format": "󰌀 {}",

@@ -16,7 +16,7 @@ theme='style-1'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+host=`whoami`
 
 # Options
 shutdown=''
@@ -96,11 +96,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+      hyprlock
         ;;
     $suspend)
 		run_cmd --suspend

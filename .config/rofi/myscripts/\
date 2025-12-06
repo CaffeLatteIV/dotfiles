@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Path to the theme file
+theme="$HOME/.config/rofi/catppuccin-lock.rasi"
+
+# Get Hostname
+host=$(whoami)
+
+# Prompt Text
+prompt="Hi, $host"
+
+# Icons (Nerd Font)
+# You can paste these directly into the script
+shutdown='  Shutdown'
+reboot='󰑓  Reboot'
+lock='  Lock'
+suspend='  Suspend'
+logout='󰗽  Logout'
+
+# Options List
+# Reordered: Shutdown -> Reboot -> Logout -> Suspend -> Lock
+options="$lock\n$shutdown\n$reboot\n$logout\n$suspend"
+
+# Rofi Command
+# -dmenu: runs rofi in dmenu mode
+# -p: sets the prompt text
+# -theme: uses the specific config file
+chosen="$(echo -e "$options" | rofi -dmenu -p "$prompt" -theme "${theme}")"
+
+# Execution Logic
+case $chosen in
+    $lock)
+        hyprlock
+        ;;
+    $suspend)
+        systemctl suspend
+        ;;
+    $logout)
+        # Hyprland exit command
+        hyprctl dispatch exit
+        ;;
+    $reboot)
+        systemctl reboot
+        ;;
+    $shutdown)
+        systemctl poweroff
+        ;;
+    esac

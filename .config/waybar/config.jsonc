@@ -30,21 +30,20 @@
     // "custom/recording",
     "custom/powermenu"
   ],
-"custom/spotify": {
-   "format": "{}",
-   "max-length": 40,
-   "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh", // Script in resources folder
-   "interval":5,
-   "exec-if": "pgrep spotify"
-},
-
-"bluetooth":{
-  "format":" {}",
-  "format-connected":" {device_alias}",
-  "exec":"~/.config/waybar/scripts/bt-status.sh",
-  "on-click": "~/.config/waybar/scripts/bluetui-toggle.sh",
-  "on-click-right": "~/.config/waybar/scripts/bt-toggle.sh"
-},
+  "custom/spotify": {
+    "format": "{}",
+    "max-length": 40,
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh", // Script in resources folder
+    "interval": 5,
+    "exec-if": "pgrep spotify"
+  },
+  "bluetooth": {
+    "format": " {}",
+    "format-connected": " {device_alias}",
+    "exec": "~/.config/waybar/scripts/bt-status.sh",
+    "on-click": "~/.config/waybar/scripts/bluetui-toggle.sh",
+    "on-click-right": "~/.config/waybar/scripts/bt-toggle.sh"
+  },
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -179,16 +178,15 @@
       "󱟢"
     ],
     "events": {
-		"on-discharging-warning": "notify-send -u normal 'Low Battery'",
-		"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
-		"on-charging-100": "notify-send -u normal 'Battery Full!'"
-  	},
+      "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+      "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+      "on-charging-100": "notify-send -u normal 'Battery Full!'"
+    },
     "format-full": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "tooltip": true,
     "on-click-middle": "echo 0 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode",
     "on-click-right": "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
-
   },
   "clock": {
     "interval": 1,
@@ -197,10 +195,10 @@
     "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>",
     "calendar": {
       "format": {
-        "months":     "<span color='#BB9AF7'><b>{}</b></span>",
-				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        "months": "<span color='#BB9AF7'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       },
     },
   },
@@ -247,7 +245,7 @@
   },
   "custom/powermenu": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/rofi/powermenu/type-1/powermenu.sh",
+    "on-click": "sleep 0.1 && ~/.config/rofi/myscripts/lock.sh",
     "tooltip": false
   },
   "tray": {

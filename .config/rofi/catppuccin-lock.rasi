@@ -12,11 +12,19 @@
     fg-alt:     #7f849c;
     accent:     #565f89;
     urgent:     #f38ba8; /* Red */
-    
+
     /* Global settings */
     background-color: @bg-base;
     text-color:       @fg-text;
     font:            "BlexMono Nerd Font Medium 14";
+}
+configuration{
+    kb-row-down: "j";
+    kb-row-up: "k";
+    kb-row-right: "l";
+    kb-row-left: "h";
+
+
 }
 
 window {
@@ -44,12 +52,10 @@ prompt {
     text-color:       @bg-base;
     padding:          12px;
     border-radius:    6px;
-    width:            100%;
-    horizontal-align: 0.5; /* Centers the "Hi, User" text */
 }
 
 listview {
-    lines:            5;
+    lines:            6;
     columns:          1;
     scrollbar:        false;
     spacing:          10px;
@@ -59,6 +65,9 @@ element {
     padding:          12px;
     border-radius:    6px;
     cursor:           pointer;
+    background-color: @bg-base;
+    text-color:       white;
+
 }
 
 element-text {
@@ -74,11 +83,6 @@ element-icon {
     cursor:           inherit;
 }
 
-/* Normal State */
-element normal.normal {
-    background-color: @bg-base;
-    text-color:       @fg-alt;
-}
 
 /* Selected State */
 element selected.normal {

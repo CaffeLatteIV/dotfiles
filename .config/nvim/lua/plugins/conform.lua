@@ -17,6 +17,13 @@ return {
 					markdown = { "prettier" },
 					graphql = { "prettier" },
 				},
+
+				formatters = {
+					prettier = {
+						prepend_args = { "--print-width", "150" },
+					},
+				},
+
 				-- Optional: format on save
 				format_on_save = function(bufnr)
 					local disable_filetypes = { c = true, cpp = true }

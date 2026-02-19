@@ -16,11 +16,24 @@ return {
 					yaml = { "prettier" },
 					markdown = { "prettier" },
 					graphql = { "prettier" },
+					python = { "isort", "black" },
 				},
-
 				formatters = {
+					black = {
+						prepend_args = { "--line-length", "150" },
+					},
 					prettier = {
-						prepend_args = { "--print-width", "150" },
+						prepend_args = function()
+							return {
+								"--no-semi",
+								"--single-quote",
+								"--no-bracket-spacing",
+								"--print-width",
+								"150",
+								"--config-precedence",
+								"prefer-file",
+							}
+						end,
 					},
 				},
 

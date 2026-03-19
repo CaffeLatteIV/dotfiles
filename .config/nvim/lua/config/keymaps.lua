@@ -12,3 +12,6 @@ vim.keymap.set("n", "<leader>l", ":listchars!<cr>", { desc = "Toggle [l]istchars
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- nvim tree
+vim.keymap.set("n", "<A-1>", ":NvimTreeToggle<CR>", {})

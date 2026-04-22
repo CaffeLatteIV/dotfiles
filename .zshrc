@@ -22,11 +22,9 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::debian
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 zinit snippet OMZL::git.zsh
+zinit snippet OMZP::extract # extract any type of compressed folder
 
 # Load completions
 autoload -Uz compinit && compinit

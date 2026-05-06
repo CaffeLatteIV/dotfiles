@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-directory=$HOME/.config/hypr/wallpapers
+directory=$HOME/dotfiles/wallpapers
 interval=300 # Change every 5 minutes (in seconds)
 
 while true; do

@@ -72,7 +72,7 @@ alias gg='lazygit'
 alias wgu='sudo resolvconf -u; sudo wg-quick up wg0' # wireguard vpn up
 alias wgd='sudo wg-quick down wg0' # wireguard vpn down
 # Export PATH$
-export PATH="$HOME/.local/bin:$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 
 # nvim
 export EDITOR="/usr/bin/nvim"

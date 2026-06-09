@@ -24,7 +24,6 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZL::git.zsh
-zinit snippet OMZP::extract # extract any type of compressed folder
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -72,7 +71,7 @@ alias gg='lazygit'
 alias wgu='sudo resolvconf -u; sudo wg-quick up wg0' # wireguard vpn up
 alias wgd='sudo wg-quick down wg0' # wireguard vpn down
 # Export PATH$
-export PATH="$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 
 # nvim
 export EDITOR="/usr/bin/nvim"

@@ -1,12 +1,17 @@
 return {
-  'echasnovski/mini.trailspace',
-  version = false,
-  config = function()
-    require('mini.trailspace').setup()
-    vim.keymap.set('n',
-      '<leader>sws',
-      '<cmd>lua MiniTrailspace.trim()<cr><cmd>lua MiniTrailspace.trim_last_lines()<cr>',
-      { desc = 'Trim all trailing whitespace and all trailing empty lines' }
-    )
-  end
+	"echasnovski/mini.trailspace",
+	version = false,
+	config = function()
+		-- 1. Initialize the plugin
+		require("mini.trailspace").setup()
+
+		-- 2. Automatically trim on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function()
+				MiniTrailspace.trim()
+				MiniTrailspace.trim_last_lines()
+			end,
+		})
+	end,
 }

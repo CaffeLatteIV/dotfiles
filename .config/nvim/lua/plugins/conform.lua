@@ -26,7 +26,6 @@ return {
 						prepend_args = function()
 							return {
 								"--no-semi",
-								"--single-quote",
 								"--no-bracket-spacing",
 								"--print-width",
 								"150",

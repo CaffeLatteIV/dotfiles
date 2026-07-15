@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Ensure only one watcher runs
@@ -14,4 +15,3 @@ while inotifywait -r -e close_write,modify,create,delete ~/.config/waybar/; do
     echo "Reloading Waybar..."
     pkill -SIGUSR2 waybar
 done
-

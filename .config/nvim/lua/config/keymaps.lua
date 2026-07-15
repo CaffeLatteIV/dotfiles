@@ -4,6 +4,7 @@ vim.keymap.set("n", "<leader>f", function()
 	require("conform").format()
 end, { desc = "[F]ormat buffer" })
 
+--
 -- Navigating buffers
 -- Press: <leader> then "b" then "b"
 -- Action: Instantly toggles back and forth between your current file and your last-used file.

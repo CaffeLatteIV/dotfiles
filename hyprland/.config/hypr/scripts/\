@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Configuration
+directory="$HOME/dotfiles/wallpapers"
+interval=300 # Change every 5 minutes (in seconds)
+
+# Configurazione Log
+# Usa ~/.local/state/nome-script secondo lo standard XDG
+log_dir="${XDG_STATE_HOME:-$HOME/.local/state}/hypr-wallpaper"
+mkdir -p "$log_dir"
+log_file="$log_dir/changer.log"
+
+# Funzione per scrivere nel log con data e ora
+log() {
+  echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$log_file"
+}
+
+# Redirige tutti gli errori (stderr) dello script direttamente nel file di log
+exec 2>> "$log_file"
+
+log "[START] Avvio demone wallpaper"
+
+while true; do
+  # 1. Get a random image from the directory
+  random_wall=$(find -L "$directory" -type f -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" | shuf -n 1)
+
+  # Check if a file was found
+  if [ -z "$random_wall" ]; then
+    log "[ERRORE] Nessun wallpaper trovato in $directory"
+    sleep 60
+    continue
+  fi
+
+  log "[INFO] Applico: $random_wall"
+
+  # 3. Apply the wallpaper to all connected monitors
+  # Nota: hyprpaper usa la sintassi "monitor,immagine". Se ometti il monitor (inizia con la virgola),
+  # lo applica a tutti. Ho rimosso la virgola finale del tuo script originale.
+  hyprctl hyprpaper wallpaper ",$random_wall" >> "$log_file" 2>&1
+
+  # 5. Wait for the next interval
+  sleep $interval
+done

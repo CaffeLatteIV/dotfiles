@@ -10,7 +10,7 @@ local smw = require("split-monitor-workspaces")
 --- Required setup call with your custom configuration.
 smw.setup({
 	--- Number of workspaces assigned to each monitor.
-	--workspace_count = 10,
+	workspace_count = 10,
 
 	--- Monitor priority order: determines which monitor gets the lowest workspace IDs.
 	--- Monitors not listed are assigned priorities in the order Hyprland reports them.
@@ -43,7 +43,7 @@ for i = 1, 10 do
 		n = "0"
 	end -- Optional if you configured 10 workspaces: bind workspace 10 to SUPER + 0
 	-- Switch to the Nth workspace on the currently focused monitor.
-	hl.bind(mainMod .. " +" .. n, smw.workspace(n))
+	hl.bind(mainMod .. " + " .. n, smw.workspace(n))
 	-- Move the active window to the Nth workspace on the currently focused monitor.
 	hl.bind(mainMod .. " + SHIFT + " .. n, smw.move_to_workspace(n))
 end

@@ -1,3 +1,10 @@
+# My custom dotfiles
+
+## TODO
+
+- migrate from rofi to quickshell
+- reorder scripts into /scripts folder
+
 # Inizializzazione
 
 ```bash
@@ -21,7 +28,7 @@ Installa il tema
 ```bash
 git clone https://github.com/mino29/tokyo-night-grub.git
 ```
-2. Change directory 
+2. Change directory
 ```
 cd tokyo-night-grub
 ```
@@ -41,4 +48,3 @@ run this command
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 then reboot and voila
-

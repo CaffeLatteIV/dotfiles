@@ -1,9 +1,10 @@
-keybind.sh
-/banner/*
-.git
-README.*
-banner.sh
-keybinds.sh
-.stow-local-ignore
+# Ignora file di testo e documentazione
+^README.*
+^LICENSE.*
 
-wallpaper/
+# Ignora file di sistema e di Git (se finiscono nei pacchetti)
+^\.DS_Store
+^\.git
+
+# Ignora il file di ignore di Stow stesso
+^\.stow-local-ignore

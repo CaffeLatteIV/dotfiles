@@ -13,8 +13,13 @@ one_liner() {
   joke_file="$HOME/dotfiles/banner/jokes"
   mapfile -t jokes <"$joke_file"
   random=$((RANDOM % ${#jokes[@]}))
-  printf "\n${jokes[$random]}\n" | lolcat
+  printf "\n%s\n" "${jokes[$random]}" | lolcat
+}
+cheatsheet() {
+  local cheatsheet_file="$HOME/dotfiles/banner/cheatsheet"
+  echo -e "$(<"$cheatsheet_file")"
 }
 
-random_font $n1
-one_liner $n2
+random_font
+cheatsheet
+one_liner

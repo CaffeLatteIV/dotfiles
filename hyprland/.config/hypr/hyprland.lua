@@ -97,4 +97,5 @@ hl.on("hyprland.start", function()
 	-- 	hl.exec_cmd("~/.config/hypr/scripts/wallpaper_slideshow.sh") -- ora e' un proc su systemd
 	hl.exec_cmd("hyprpm reload -n")
 	hl.exec_cmd("clipse -listen")
+	hl.exec_cmd("hyprpaper")
 end)

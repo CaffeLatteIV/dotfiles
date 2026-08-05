@@ -2,7 +2,9 @@
 [Unit]
 Description=Hyprland Random Wallpaper Changer
 # Assicura che parta solo dopo che l'ambiente grafico è attivo
-After=graphical-session.target
+After=graphical-session.target hyprpaper.service
+Requires=hyprpaper.service
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
@@ -13,4 +15,4 @@ Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

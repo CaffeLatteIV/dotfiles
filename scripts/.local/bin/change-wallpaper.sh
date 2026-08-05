@@ -3,6 +3,13 @@
 directory="$HOME/Pictures/wallpapers"
 interval=300
 
+# Wait until hyprpaper is fully running before sending commands
+while ! pgrep -x hyprpaper >/dev/null; do
+  sleep 1
+done
+
+# Give the IPC socket an extra second to initialize
+sleep 1
 echo "Starting wallpaper daemon"
 
 while true; do

@@ -64,6 +64,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias vim='nvim'
+alias v='nvim'
 alias c='clear'
 alias mu='distrobox enter --root kmuscolo'
 alias ls='eza -lh -g --group-directories-first --icons=auto'

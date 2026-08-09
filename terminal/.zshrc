@@ -64,7 +64,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias vim='nvim'
-alias v='nvim'
+alias vm='nvim'
 alias c='clear'
 alias mu='distrobox enter --root kmuscolo'
 alias ls='eza -lh -g --group-directories-first --icons=auto'
@@ -72,6 +72,7 @@ alias gg='lazygit'
 alias wgu='sudo resolvconf -u; sudo wg-quick up wg0' # wireguard vpn up
 alias wgd='sudo wg-quick down wg0' # wireguard vpn down
 alias llm='nohup /home/caffelatte/AnythingLLMDesktop.AppImage > /dev/null 2>&1 & disown' # run anythingllm
+alias icat="kitty +kitten icat" # visualizzatore immagini di kitty
 # Export PATH$
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 

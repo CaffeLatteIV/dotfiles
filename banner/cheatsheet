@@ -1,13 +1,21 @@
-\e[1;34m=== CLI ALIASES ===\e[0m             \e[1;34m=== NVIM: FILES & SEARCH ===\e[0m
-v    # Open Neovim              <L>1     # Toggle NvimTree
-c    # Clear screen             <L>ff    # Find files (Telescope)
-gg   # Lazygit                  <L>fg    # Find text (Live Grep)
-llm  # AnythingLLM              <L>bb    # Toggle last buffer
-mu   # Distrobox Kali           <L>. / , # Next / Prev buffer
+
+\e[1;34m=== CLI ALIASES ===\e[0m               \e[1;34m=== NVIM: FILES & SEARCH ===\e[0m
+v    # Open Neovim                <L>1     # Toggle NvimTree
+c    # Clear screen               <L>ff    # Find files (Telescope)
+gg   # Lazygit                    <L>fg    # Find text (Live Grep)
+llm  # AnythingLLM                <L>bb    # Toggle last buffer
+mu   # Distrobox Kali             <L>. / , # Next / Prev buffer
 wgu  # Wireguard up
-wgd  # Wireguard down           \e[1;34m=== NVIM: EDIT & WINDOWS ===\e[0m
-                                <L>f     # Format buffer
-                                <L>nh    # Clear search highlight
-                                <L>sv/sh # Split Vert / Horiz
-                                <C-hjkl> # Navigate split windows
-                                V + J/K  # Move text block up/down
+wgd  # Wireguard down             \e[1;34m=== NVIM: EDIT & WINDOWS ===\e[0m
+icat # image viewer
+                                  <L>f     # Format buffer
+                                  <L>nh    # Clear search highlight
+\e[1;34m=== Kitty ===\e[0m                     <L>sv/sh # Split Vert / Horiz
+                                  <C-hjkl> # Navigate split windows
+<S>t              # new tab       V + J/K  # Move text block up/down
+<S>tab            # next tab
+<S>shitft + tab   # prev tab
+<S>q              # close tab
+<S>enter          # new window
+<S>x              # close window
+<S>. / ,          # next / prev window

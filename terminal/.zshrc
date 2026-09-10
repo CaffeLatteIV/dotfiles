@@ -88,3 +88,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 # banner
 bash ~/dotfiles/banner/banner.sh
+
+# Qwen Code PATH block begin
+export PATH='/home/caffelatte/.local/bin':$PATH
+# Qwen Code PATH block end

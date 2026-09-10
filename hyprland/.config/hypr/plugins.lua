@@ -23,10 +23,10 @@ smw.setup({
 	keep_focused = true,
 
 	--- Show a Hyprland notification on init and remap.
-	-- enable_notifications = false,
+	enable_notifications = false,
 
 	--- Keep workspaces alive even when empty.
-	---enable_persistent_workspaces = false,
+	enable_persistent_workspaces = false,
 
 	--- Wrap around when cycling past the first or last workspace.
 	enable_wrapping = true,
@@ -37,17 +37,16 @@ smw.setup({
 
 --- `get_amount_of_workspaces` is an easy helper function that simply returns the workspace_count you passed to the setup function.
 local mainMod = "SUPER"
-for i = 1, 10 do
+for i = 1, smw.get_amount_of_workspaces() do
 	local n = tostring(i)
 	if n == "10" then
 		n = "0"
 	end -- Optional if you configured 10 workspaces: bind workspace 10 to SUPER + 0
 	-- Switch to the Nth workspace on the currently focused monitor.
-	hl.bind(mainMod .. " + " .. n, smw.workspace(n))
-	-- Move the active window to the Nth workspace on the currently focused monitor.
-	hl.bind(mainMod .. " + SHIFT + " .. n, smw.move_to_workspace(n))
+	hl.bind(mainMod .. " +" .. n, smw.workspace(n))
+	-- Move the active window to the Nth workspace on the currently focused monitor silently (no focus change).
+	hl.bind(mainMod .. " + SHIFT +" .. n, smw.move_to_workspace_silent(n))
 end
-
 --- Cycle workspaces on the current monitor.
 --- Accepts "next", "prev", "+N", or "-N" (e.g. "+2" skips two workspaces at once. why would you want to do that? idk but you can).
 hl.bind(mainMod .. " + mouse_down", smw.cycle_workspaces("next"))

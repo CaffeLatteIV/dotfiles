@@ -89,6 +89,7 @@ eval "$(zoxide init zsh)"
 # banner
 bash ~/dotfiles/banner/banner.sh
 
-# Qwen Code PATH block begin
-export PATH='/home/caffelatte/.local/bin':$PATH
-# Qwen Code PATH block end
+# android development
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools

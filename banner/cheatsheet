@@ -12,7 +12,8 @@ icat # image viewer
                                   <L>nh    # Clear search highlight
 \e[1;34m=== Kitty ===\e[0m                     <L>sv/sh # Split Vert / Horiz
                                   <C-hjkl> # Navigate split windows
-<S>t              # new tab       V + J/K  # Move text block up/down
+alt               # super         V + J/K  # Move text block up/down
+<S>t              # new tab
 <S>tab            # next tab
 <S>shitft + tab   # prev tab
 <S>q              # close tab

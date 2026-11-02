@@ -24,8 +24,9 @@ Row {
 
     Process {
         id: ipProc
-        // Ottiene in modo sicuro l'IP che ha accesso a internet (escludendo il localhost e le interfacce virtuali/docker)
-        command: ["sh", "-c", "ip route get 1.1.1.1 | awk '{print $7; exit}'"]
+        // Robust across iproute2 versions: grab the token right after "src"
+        // instead of assuming it is always field $7.
+        command: ["sh", "-c", "ip route get 1.1.1.1 | awk '/src/{for(i=1;i<=NF;i++) if($i==\"src\"){print $(i+1); exit}}'"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {

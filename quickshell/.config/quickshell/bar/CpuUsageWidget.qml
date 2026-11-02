@@ -23,8 +23,9 @@ Row {
 
     Process {
         id: cpuProc
-        // Calcola l'utilizzo della CPU basandosi su due campioni rapidi di /proc/stat
-        command: ["sh", "-c", "awk '/^cpu / {u=$2+$4; t=$2+$3+$4+$5; if (NR==1){u1=u; t1=t} else {print int(100*(u-u1)/(t-t1))}}' /proc/stat <(sleep 0.2; cat /proc/stat)"]
+        // top -bn1 reads /proc/stat internally and reports the idle field; we
+        // print 100 - idle. No bash process-substitution hack, no sleep-per-tick.
+        command: ["sh", "-c", "top -bn1 | awk -F'[,:]' '/^%Cpu/{for(i=1;i<=NF;i++) if($i ~ / id/) {gsub(/[^0-9.]/,\"\",$i); printf \"%d\", 100-$i; exit}}'"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {

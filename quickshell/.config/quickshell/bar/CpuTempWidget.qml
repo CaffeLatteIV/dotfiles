@@ -23,8 +23,9 @@ Row {
 
     Process {
         id: tempProc
-        // Legge la temperatura standard della CPU in milligradi e la converte in gradi
-        command: ["sh", "-c", "cat /sys/class/thermal/thermal_zone*/temp 2>/dev/null | head -n 1 | awk '{print int($1/1000)}'"]
+        // Pick the actual CPU thermal zone (x86_pkg / cpu / core / package),
+        // not the first zone (thermal_zone0 here is the motherboard ACPI sensor).
+        command: ["sh", "-c", "for z in /sys/class/thermal/thermal_zone*; do t=$(cat $z/type 2>/dev/null); case \"$t\" in *x86_pkg*|*cpu*|*core*|*package*) cat $z/temp; break;; esac; done | head -n1 | awk '{print int($1/1000)}'"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {

@@ -44,12 +44,21 @@ Item {
 
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Overlay
+        // Without focusable:true the FocusScope never gets keyboard focus,
+        // so ESC wouldn't close the popup.
+        focusable: true
 
         implicitWidth: popupLayout.implicitWidth
         implicitHeight: popupLayout.implicitHeight
 
         anchors {
             top: true
+        }
+
+        // Drop the window below the status bar (30px bar + 6px gap) instead of
+        // relying on the old fixed 45px spacer inside the layout.
+        margins {
+            top: 36
         }
 
         // Usiamo un FocusScope per catturare la tastiera all'interno del pop-up
@@ -66,11 +75,6 @@ Item {
             // Layout a colonna per impilare gli elementi verticalmente
             Column {
                 id: popupLayout
-
-                Item {
-                    width: 1
-                    height: 45
-                }
 
                 Rectangle {
                     id: popupRect

@@ -16,7 +16,9 @@ Item {
 
     Process {
         id: lockProc
-        command: ["sh", "-c", "~/.config/rofi/myscripts/lock.sh"]
+        // Open the rofi power menu (shutdown/reboot/lock/suspend/logout)
+        // instead of only locking, so the power icon matches the action.
+        command: ["sh", "-c", "~/.config/rofi/scripts/powermenu_t1"]
     }
 
     MouseArea {

@@ -34,7 +34,9 @@ Item {
     // Processo per LEGGERE il numero di aggiornamenti in background
     Process {
         id: updatesProc
-        command: ["sh", "-c", "waybar-module-pacman-updates"]
+        // count outdated packages directly; the old `waybar-module-pacman-updates`
+        // helper isn't installed, so this always returned "0".
+        command: ["sh", "-c", "checkupdates 2>/dev/null | wc -l"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {

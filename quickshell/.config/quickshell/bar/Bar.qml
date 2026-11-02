@@ -11,6 +11,8 @@ PanelWindow {
     }
 
     implicitHeight: 30
+    // Reserve the bar's height so maximized windows don't slide underneath it.
+    exclusiveZone: implicitHeight
     color: "#1a1b26"
 
     // --- LATO SINISTRO ---
@@ -22,10 +24,11 @@ PanelWindow {
         }
         spacing: 10
 
-        NotificationWidget {
+        LauncherWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
         WorkspacesWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
     }

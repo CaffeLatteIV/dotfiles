@@ -1,37 +1,66 @@
 import QtQuick
+import Quickshell
+import Quickshell.Hyprland
 
+// Real Hyprland workspace switcher.
+//
+// Shows, for this screen's monitor, only the workspaces that are occupied
+// (have windows) plus the currently active/focused one, so you always see where
+// you are. The active workspace gets a solid Tokyo Night blue pill; hovering any
+// workspace gives a faded-background highlight.
 Row {
-    spacing: 8 // Spazio tra i numeri
+    id: root
+    spacing: 6
+
+    // Screen this bar instance lives on, passed from Bar.qml (topBar.screen).
+    property var currentScreen
+
+    // The Hyprland monitor backing this screen (may be null until screens settle).
+    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(currentScreen)
 
     Repeater {
-        model: 10
+        model: Hyprland.workspaces
 
         delegate: Item {
-            // Diamo una dimensione fissa all'elemento invisibile
-            // così è facile da cliccare anche se il numero è stretto (es. "1")
-            width: 20
+            id: ws
+            required property var modelData
+
+            readonly property bool onMonitor: root.monitor != null && modelData.monitor === root.monitor
+            // "Occupied" = has at least one toplevel window on it.
+            readonly property bool occupied: modelData.toplevels != null && modelData.toplevels.count > 0
+            readonly property bool isActive: modelData.active
+
+            // Show occupied workspaces, plus the active one even when empty.
+            visible: onMonitor && (occupied || isActive)
+
+            width: 26
             height: 24
+
+            Rectangle {
+                id: pill
+                anchors.fill: parent
+                radius: 4
+                // Active = solid accent pill; hover = faded bg; otherwise transparent.
+                color: isActive ? "#7aa2f7" : (wsHover.containsMouse ? "#414868" : "transparent")
+            }
 
             Text {
                 anchors.centerIn: parent
-                text: index === 9 ? "0" : (index + 1).toString()
-
-                // Effetto hover: il testo diventa bianco se il mouse è sopra,
-                // altrimenti rimane grigio chiaro
-                color: mouseArea.containsMouse ? "#c0caf5" : "#545c7e"
+                text: modelData.id
+                // Active = dark text on the blue pill; hover = accent blue; else dim.
+                color: isActive ? "#1a1b26" : (wsHover.containsMouse ? "#7aa2f7" : "#545c7e")
                 font.pixelSize: 14
-                font.bold: true
+                font.bold: isActive
             }
 
             MouseArea {
-                id: mouseArea
+                id: wsHover
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
-                    let targetDesktop = index === 9 ? 10 : (index + 1)
-                    console.log("Cliccato per andare al desktop:", targetDesktop)
+                    modelData.activate();
                 }
             }
         }

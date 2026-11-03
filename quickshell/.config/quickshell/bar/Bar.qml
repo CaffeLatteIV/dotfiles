@@ -4,6 +4,10 @@ import QtQuick
 PanelWindow {
     id: topBar
 
+    // Injected by the parent Variants: the Screen this bar belongs to.
+    required property var modelData
+    screen: modelData
+
     anchors {
         top: true
         left: true
@@ -11,6 +15,8 @@ PanelWindow {
     }
 
     implicitHeight: 30
+    // Reserve the bar's height so maximized windows don't slide underneath it.
+    exclusiveZone: implicitHeight
     color: "#1a1b26"
 
     // --- LATO SINISTRO ---
@@ -22,10 +28,11 @@ PanelWindow {
         }
         spacing: 10
 
-        NotificationWidget {
+        LauncherWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
         WorkspacesWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
     }
@@ -36,6 +43,7 @@ PanelWindow {
         spacing: 20
 
         UpdatesWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
         WeatherWidget {
@@ -43,6 +51,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
         ClockWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
     }
@@ -63,6 +72,9 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
         RamWidget {
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        VramWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
         NetworkWidget {

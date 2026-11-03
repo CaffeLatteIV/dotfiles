@@ -145,7 +145,9 @@ Item {
 
                     weatherWidget.mainText = wmo(cur.weather_code) + " " + cur.apparent_temperature + "°";
 
-                    let tt = "<b>" + cur.temperature_2m + "° (percepita " + cur.apparent_temperature + "°)</b><br>";
+                    // Location header in the popup
+                    let tt = "<b>📍 Bologna, Italy</b><br><br>";
+                    tt += "<b>" + cur.temperature_2m + "° (percepita " + cur.apparent_temperature + "°)</b><br>";
                     tt += "Vento: " + cur.wind_speed_10m + " km/h<br>";
                     tt += "Umidità: " + cur.relative_humidity_2m + "%<br>";
 

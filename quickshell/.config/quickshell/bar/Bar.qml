@@ -50,6 +50,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
         ClockWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
     }

@@ -4,6 +4,10 @@ import QtQuick
 PanelWindow {
     id: topBar
 
+    // Injected by the parent Variants: the Screen this bar belongs to.
+    required property var modelData
+    screen: modelData
+
     anchors {
         top: true
         left: true

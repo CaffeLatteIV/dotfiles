@@ -4,24 +4,41 @@ import Quickshell.Io
 
 // Bluetooth status + bluetui launcher.
 //
-// Now reports connection state instead of just being a launcher icon:
-//   - green icon  : controller on AND a device connected
-//   - blue icon   : controller on, nothing connected
-//   - dim icon    : controller off
+// Shows the connected device name next to the icon, plus connection state:
+//   - green icon + device name : controller on AND a device connected
+//   - blue icon                : controller on, nothing connected
+//   - dim icon                 : controller off
 // A small status dot mirrors the same state. Clicking opens bluetui in kitty.
 Item {
     id: bt
-    width: 24
+    width: btRow.width
     height: 24
 
     property bool powered: false
     property bool connected: false
+    property string deviceName: ""
 
-    Text {
-        anchors.centerIn: parent
-        text: "󰂯" // Icona Bluetooth NerdFont
-        color: bt.powered ? (bt.connected ? "#9ece6a" : "#7aa2f7") : "#545c7e"
-        font.pixelSize: 16
+    Row {
+        id: btRow
+        spacing: 4
+        anchors.verticalCenter: parent.verticalCenter
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: "󰂯" // Icona Bluetooth NerdFont
+            color: bt.powered ? (bt.connected ? "#9ece6a" : "#7aa2f7") : "#545c7e"
+            font.pixelSize: 16
+        }
+
+        // Connected device name (only when connected)
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: bt.deviceName
+            color: "#9ece6a"
+            font.pixelSize: 12
+            font.bold: true
+            visible: bt.connected && bt.deviceName !== ""
+        }
     }
 
     // tiny status dot
@@ -45,14 +62,16 @@ Item {
         }
     }
 
-    // Any connected device?
+    // Connected device(s): extract the first connected device name.
     Process {
         id: btConnProc
-        command: ["sh", "-c", "bluetoothctl devices Connected 2>/dev/null | wc -l"]
+        command: ["sh", "-c", "bluetoothctl devices Connected 2>/dev/null | awk '{for(i=3;i<=NF;i++) printf \"%s \", $i; print \"\"}' | head -1"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
-                bt.connected = parseInt(this.text.trim()) > 0;
+                let name = this.text.trim();
+                bt.deviceName = name;
+                bt.connected = name !== "";
             }
         }
     }

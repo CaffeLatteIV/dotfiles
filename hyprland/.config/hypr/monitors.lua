@@ -1,12 +1,12 @@
 ---@module 'hl'
 --monitor integrato
--- hl.monitor({
--- 	output = "eDP-1",
--- 	mode = "1920x1080",
--- 	position = "0x0",
--- 	scale = 1,
--- 	bitdepth = 10,
--- })
+hl.monitor({
+  output = "eDP-1",
+  mode = "1920x1080",
+  position = "0x0",
+  scale = 1.2,
+  bitdepth = 10,
+})
 
 --monitor bunker scrauso
 --hl.monitor({
@@ -16,29 +16,31 @@
 --	scale = 1,
 --	bitdepth = 10,
 --})
---monitor 4k (bunker)
---hl.monitor({
---	output = "HDMI-A-1",
---	mode = "1920x1080",
---	position = "1920x0",
---	scale = 1,
---	bitdepth = 10,
---})
+-- monitor 4k (bunker)
+hl.monitor({
+  output = "HDMI-A-1",
+
+
+  mode = "3840x2160@60.00",
+  position = "1920x0",
+  scale = 1.6,
+  bitdepth = 10,
+})
 --
 -- monitor pc fisso (primario)
-hl.monitor({
-	output = "DP-1",
-	mode = "1920x1080@100.05",
-	position = "0x0",
-	scale = 1,
-	bitdepth = 10,
-})
-
--- monitor pc fisso (secondario)
-hl.monitor({
-	output = "DP-3",
-	mode = "1920x1080@100.05",
-	position = "-1920x0",
-	scale = 1,
-	bitdepth = 10,
-})
+-- hl.monitor({
+-- 	output = "DP-1",
+-- 	mode = "1920x1080@100.05",
+-- 	position = "0x0",
+-- 	scale = 1,
+-- 	bitdepth = 10,
+-- })
+--
+-- -- monitor pc fisso (secondario)
+-- hl.monitor({
+-- 	output = "DP-3",
+-- 	mode = "1920x1080@100.05",
+-- 	position = "-1920x0",
+-- 	scale = 1,
+-- 	bitdepth = 10,
+-- })

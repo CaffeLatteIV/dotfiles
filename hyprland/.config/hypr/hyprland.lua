@@ -89,6 +89,7 @@ hl.config({
 	binds = {
 		scroll_event_delay = 0,
 		hide_special_on_workspace_change = true,
+		window_direction_monitor_fallback = true,
 	},
 })
 

@@ -1,7 +1,7 @@
 -- Press: <leader> then "f"
 -- Action: Automatically formats the code in your current file using the 'conform' plugin.
 vim.keymap.set("n", "<leader>f", function()
-	require("conform").format()
+  require("conform").format()
 end, { desc = "[F]ormat buffer" })
 
 --

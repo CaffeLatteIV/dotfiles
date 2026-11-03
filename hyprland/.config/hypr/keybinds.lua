@@ -95,3 +95,15 @@ end, { repeating = true, description = "Screen: Zoom out" })
 hl.bind(mainMod .. " + EQUAL", function()
 	zoomfunction(0.3)
 end, { repeating = true, description = "Screen: Zoom in" })
+
+-- finche lo split dei workspace per monitor non funziona
+-- Mappatura per i workspace da 1 a 10
+for i = 1, 10 do
+	local key = tostring(i % 10)
+
+	-- SUPER + Numero = Porta il workspace nel monitor con il focus attuale
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = tostring(i), on_current_monitor = true }))
+
+	-- SUPER + SHIFT + Numero = Sposta la finestra attiva in quel workspace
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i) }))
+end

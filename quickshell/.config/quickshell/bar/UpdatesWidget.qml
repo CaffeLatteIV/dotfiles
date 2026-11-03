@@ -7,7 +7,9 @@ Item {
     width: layout.width
     height: 30
 
-    property string updatesCount: "0"
+    // Read the shared counter (computed once by the UpdatesModel singleton)
+    // so every bar shows the same number.
+    property string updatesCount: UpdatesModel.updatesCount
 
     Row {
         id: layout
@@ -29,28 +31,5 @@ Item {
             font.bold: true
             anchors.verticalCenter: parent.verticalCenter
         }
-    }
-
-    // Processo per LEGGERE il numero di aggiornamenti in background
-    Process {
-        id: updatesProc
-        // count outdated packages directly; the old `waybar-module-pacman-updates`
-        // helper isn't installed, so this always returned "0".
-        command: ["sh", "-c", "checkupdates 2>/dev/null | wc -l"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                let out = this.text.trim();
-                updatesWidget.updatesCount = out !== "" ? out : "0";
-            }
-        }
-    }
-
-    // Controlla la presenza di aggiornamenti ogni 30 minuti
-    Timer {
-        interval: 1800000
-        running: true
-        repeat: true
-        onTriggered: updatesProc.running = true
     }
 }

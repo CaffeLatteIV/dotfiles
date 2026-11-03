@@ -2,23 +2,23 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
-Row {
-    spacing: 4
+// CPU temperature. The old thermometer icon (U+F0504) isn't in any installed
+// Nerd font and rendered as a stray "°" before the number, so it's removed —
+// the widget now just shows the value, e.g. "45°C".
+Item {
+    id: tempWidget
+    width: tempLabel.implicitWidth
+    height: 24
+
     property string tempStr: "--°C"
 
     Text {
-        text: "󰔄"
-        color: "#f7768e" // Rosso Tokyo Night
-        font.pixelSize: 15
+        id: tempLabel
         anchors.verticalCenter: parent.verticalCenter
-    }
-
-    Text {
         text: tempStr
         color: "#f7768e" // Rosso Tokyo Night
         font.pixelSize: 13
         font.bold: true
-        anchors.verticalCenter: parent.verticalCenter
     }
 
     Process {

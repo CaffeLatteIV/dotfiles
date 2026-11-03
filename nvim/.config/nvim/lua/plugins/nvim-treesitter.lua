@@ -1,17 +1,14 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = function()
-		-- pcall (Protected Call) catches the error so Neovim doesn't crash
-		local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-		if not status_ok then
-			return -- Silently exit so Lazy can finish booting and download the files!
-		end
-
-		configs.setup({
-			-- Automatically install parsers for markdown and html
-			ensure_installed = { "markdown", "markdown_inline", "html", "lua", "vim" },
-			highlight = { enable = true },
-		})
-	end,
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+        -- Enable native Treesitter highlighting for all filetypes
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                pcall(vim.treesitter.start, args.buf)
+            end,
+        })
+    end,
 }

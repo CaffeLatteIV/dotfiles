@@ -43,6 +43,7 @@ PanelWindow {
         spacing: 20
 
         UpdatesWidget {
+            currentScreen: topBar.screen
             anchors.verticalCenter: parent.verticalCenter
         }
         WeatherWidget {

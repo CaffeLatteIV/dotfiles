@@ -19,6 +19,7 @@ hl.window_rule({
 	float = true,
 	center = true,
 	size = { "(monitor_w*0.45)", "(monitor_h*0.55)" },
+	suppress_event = "maximize",
 })
 --general settings
 

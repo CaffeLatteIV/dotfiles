@@ -21,9 +21,6 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("kitty spotify_player"))
 
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("kitty --class clipse -e clipse"))
 
--- Ctrl+V: floating clipse terminal, centered (window rule handles float/center/size)
-hl.bind("CONTROL + V", hl.dsp.exec_cmd("kitty --class clipse -e clipse"))
-
 -- focus vim keys
 
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))

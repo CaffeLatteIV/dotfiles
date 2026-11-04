@@ -8,7 +8,7 @@ import Quickshell.Hyprland
 // bar, so empty workspaces stay visible. A workspace is highlighted only when
 // it actually lives on THIS screen's monitor:
 //   - the currently active workspace gets a solid Tokyo Night blue pill,
-//   - any occupied workspace (has windows) gets a green highlight,
+//   - any occupied workspace (has windows) gets a soft purple highlight,
 //   - everything else (empty, or sitting on the other monitor) renders dim.
 // Clicking a workspace switches to it (creating it if it doesn't exist yet).
 Row {
@@ -54,20 +54,20 @@ Row {
                 id: pill
                 anchors.fill: parent
                 radius: 4
-                // Active = solid accent blue; occupied = green highlight;
-                // hover = faded bg; otherwise transparent.
+                // Active = solid accent blue; occupied = soft purple wash
+                // (less prominent); hover = faded bg; otherwise transparent.
                 color: isActive ? "#7aa2f7"
-                     : occupied ? "#9ece6a"
+                     : occupied ? "#50c6a0f6"
                      : (wsHover.containsMouse ? "#414868" : "transparent")
             }
 
             Text {
                 anchors.centerIn: parent
                 text: wsId
-                // Active = dark text on blue; occupied = dark text on green;
-                // hover = accent blue; else dim.
+                // Active = dark text on blue; occupied = purple text on the
+                // soft wash; hover = accent blue; else dim.
                 color: isActive ? "#1a1b26"
-                     : occupied ? "#1a1b26"
+                     : occupied ? "#c6a0f6"
                      : (wsHover.containsMouse ? "#7aa2f7" : "#545c7e")
                 font.pixelSize: 14
                 font.bold: isActive

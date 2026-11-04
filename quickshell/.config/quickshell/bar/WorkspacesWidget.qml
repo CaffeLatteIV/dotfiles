@@ -43,7 +43,7 @@ Row {
             readonly property var workspace: root.findWorkspace(wsId)
             readonly property bool onMonitor: root.monitor != null && workspace != null && workspace.monitor === root.monitor
             // "Occupied" = has at least one toplevel window on it (on this monitor).
-            readonly property bool occupied: onMonitor && workspace.toplevels != null && workspace.toplevels.count > 0
+            readonly property bool occupied: onMonitor && workspace.toplevels != null && workspace.toplevels.values.length > 0
             // Active only when it's this monitor's current workspace.
             readonly property bool isActive: onMonitor && workspace.active
 

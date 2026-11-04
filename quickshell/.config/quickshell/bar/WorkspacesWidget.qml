@@ -4,10 +4,13 @@ import Quickshell.Hyprland
 
 // Real Hyprland workspace switcher.
 //
-// Shows, for this screen's monitor, only the workspaces that are occupied
-// (have windows) plus the currently active/focused one, so you always see where
-// you are. The active workspace gets a solid Tokyo Night blue pill; hovering any
-// workspace gives a faded-background highlight.
+// Always shows the full available set of workspaces (1-9) on every monitor's
+// bar, so empty workspaces stay visible. A workspace is highlighted only when
+// it actually lives on THIS screen's monitor:
+//   - the currently active workspace gets a solid Tokyo Night blue pill,
+//   - any occupied workspace (has windows) gets a green highlight,
+//   - everything else (empty, or sitting on the other monitor) renders dim.
+// Clicking a workspace switches to it (creating it if it doesn't exist yet).
 Row {
     id: root
     spacing: 6
@@ -18,20 +21,31 @@ Row {
     // The Hyprland monitor backing this screen (may be null until screens settle).
     readonly property HyprlandMonitor monitor: Hyprland.monitorFor(currentScreen)
 
+    // Look up the live Hyprland workspace for an id. Workspaces are created
+    // lazily by Hyprland, so ids 3-9 may not exist in the model yet.
+    function findWorkspace(id) {
+        var values = Hyprland.workspaces.values;
+        for (var i = 0; i < values.length; i++) {
+            if (values[i].id === id) return values[i];
+        }
+        return null;
+    }
+
     Repeater {
-        model: Hyprland.workspaces
+        // The full available range, 1..9. Rendered on every monitor's bar.
+        model: 9
 
         delegate: Item {
             id: ws
-            required property var modelData
+            required property int index
+            readonly property int wsId: index + 1
 
-            readonly property bool onMonitor: root.monitor != null && modelData.monitor === root.monitor
-            // "Occupied" = has at least one toplevel window on it.
-            readonly property bool occupied: modelData.toplevels != null && modelData.toplevels.count > 0
-            readonly property bool isActive: modelData.active
-
-            // Show occupied workspaces, plus the active one even when empty.
-            visible: onMonitor && (occupied || isActive)
+            readonly property var workspace: root.findWorkspace(wsId)
+            readonly property bool onMonitor: root.monitor != null && workspace != null && workspace.monitor === root.monitor
+            // "Occupied" = has at least one toplevel window on it (on this monitor).
+            readonly property bool occupied: onMonitor && workspace.toplevels != null && workspace.toplevels.count > 0
+            // Active only when it's this monitor's current workspace.
+            readonly property bool isActive: onMonitor && workspace.active
 
             width: 26
             height: 24
@@ -40,15 +54,21 @@ Row {
                 id: pill
                 anchors.fill: parent
                 radius: 4
-                // Active = solid accent pill; hover = faded bg; otherwise transparent.
-                color: isActive ? "#7aa2f7" : (wsHover.containsMouse ? "#414868" : "transparent")
+                // Active = solid accent blue; occupied = green highlight;
+                // hover = faded bg; otherwise transparent.
+                color: isActive ? "#7aa2f7"
+                     : occupied ? "#9ece6a"
+                     : (wsHover.containsMouse ? "#414868" : "transparent")
             }
 
             Text {
                 anchors.centerIn: parent
-                text: modelData.id
-                // Active = dark text on the blue pill; hover = accent blue; else dim.
-                color: isActive ? "#1a1b26" : (wsHover.containsMouse ? "#7aa2f7" : "#545c7e")
+                text: wsId
+                // Active = dark text on blue; occupied = dark text on green;
+                // hover = accent blue; else dim.
+                color: isActive ? "#1a1b26"
+                     : occupied ? "#1a1b26"
+                     : (wsHover.containsMouse ? "#7aa2f7" : "#545c7e")
                 font.pixelSize: 14
                 font.bold: isActive
             }
@@ -60,7 +80,12 @@ Row {
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
-                    modelData.activate();
+                    if (workspace != null) {
+                        workspace.activate();
+                    } else {
+                        // Workspace not created yet: dispatch creates + switches to it.
+                        Hyprland.dispatch("workspace " + wsId);
+                    }
                 }
             }
         }

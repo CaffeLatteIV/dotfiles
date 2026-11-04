@@ -2,6 +2,9 @@
 
 TERM_CMD="kitty"
 
+# Distinct window class so Hyprland can float/center this terminal (see window rules)
+FLOAT_CLASS="termfloat"
+
 # Set the directory flag for your terminal:
 # - For kitty: "-d" or "--directory"
 # - For alacritty/foot/ghostty: "--working-directory"
@@ -35,4 +38,4 @@ if [ "$WINDOW_CLASS" = "$TERM_CMD" ] && [ "$WINDOW_PID" != "null" ]; then
 fi
 
 # 4. Launch the new terminal
-$TERM_CMD $DIR_FLAG "$TARGET_DIR" &
+$TERM_CMD --class "$FLOAT_CLASS" $DIR_FLAG "$TARGET_DIR" &

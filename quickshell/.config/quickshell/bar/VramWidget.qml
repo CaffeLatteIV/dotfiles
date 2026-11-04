@@ -4,21 +4,21 @@ import Quickshell.Io
 
 // VRAM widget: shows used GPU memory via nvidia-smi (RTX 4060).
 // Same glyph as the RAM widget (proven to render in the bar font),
-// but green so it's distinguishable from RAM's orange.
+// but Catppuccin purple (mauve) so it's distinguishable from RAM's orange.
 Row {
     spacing: 4
     property string vramStr: "--GB (--%)"
 
     Text {
         text: "󰍛"
-        color: "#9ece6a"
+        color: "#c6a0f6"
         font.pixelSize: 15
         anchors.verticalCenter: parent.verticalCenter
     }
 
     Text {
         text: vramStr
-        color: "#9ece6a"
+        color: "#c6a0f6"
         font.pixelSize: 13
         font.bold: true
         anchors.verticalCenter: parent.verticalCenter

@@ -21,12 +21,9 @@ hl.window_rule({
 	size = { "(monitor_w*0.45)", "(monitor_h*0.55)" },
 	suppress_event = "maximize",
 })
--- floating terminal opened via WIN+ENTER (kitty-cwd.sh), distinct class
+-- terminal opened via WIN+ENTER (kitty-cwd.sh): keep it tiled, not fullscreen/maximized
 hl.window_rule({
 	match = { class = "^(termfloat)$" },
-	float = true,
-	center = true,
-	size = { "(monitor_w*0.45)", "(monitor_h*0.55)" },
 	suppress_event = "maximize",
 })
 --general settings

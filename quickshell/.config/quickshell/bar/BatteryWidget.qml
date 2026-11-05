@@ -5,6 +5,8 @@ import Quickshell.Io
 // Battery: shows charge % and whether it is charging. Color follows the Tokyo
 // Night palette by how much charge is left (green >= 75%, blue >= 50%,
 // gold >= 25%, red below). Icon is a Nerd Font battery/charging glyph.
+// Glyphs are written as literal UTF-8 chars (not \u escapes): these codepoints
+// are above U+FFFF, which QML's 4-digit \u escape can't represent.
 Row {
     id: batteryWidget
     spacing: 4
@@ -12,35 +14,35 @@ Row {
     property int capacity: -1          // -1 until first read
     property bool charging: false
     property string chargeStr: "--%"
-    property string iconStr: "\uf007a" // 󰁺 placeholder until data arrives
+    property string iconStr: "󰁺" // 󰁺 placeholder until data arrives
 
     // Nerd Font battery glyphs, indexed by 10% bucket (0..9, 10 = full).
     readonly property var battIcons: [
-        "\uf007a", // 󰁺 0%
-        "\uf007b", // 󰁻 10%
-        "\uf007c", // 󰁼 20%
-        "\uf007d", // 󰁽 30%
-        "\uf007e", // 󰁾 40%
-        "\uf007f", // 󰁿 50%
-        "\uf0080", // 󰂀 60%
-        "\uf0081", // 󰂁 70%
-        "\uf0082", // 󰂂 80%
-        "\uf0083", // 󰂃 90%
-        "\uf0084"  // 󰂄 100%
+        "󰁺", // 󰁺 0%
+        "󰁻", // 󰁻 10%
+        "󰁼", // 󰁼 20%
+        "󰁽", // 󰁽 30%
+        "󰁾", // 󰁾 40%
+        "󰁿", // 󰁿 50%
+        "󰂀", // 󰂀 60%
+        "󰂁", // 󰂁 70%
+        "󰂂", // 󰂂 80%
+        "󰂃", // 󰂃 90%
+        "󰂄" // 󰂄 100%
     ]
 
     // Nerd Font charging glyphs, indexed by 10% bucket (1..10).
     readonly property var chgIcons: [
-        "\uf0085", // 󰂅 10%
-        "\uf0086", // 󰂆 20%
-        "\uf0087", // 󰂇 30%
-        "\uf0088", // 󰂈 40%
-        "\uf0089", // 󰂉 50%
-        "\uf008a", // 󰂊 60%
-        "\uf008b", // 󰂋 70%
-        "\uf008c", // 󰂌 80%
-        "\uf008d", // 󰂍 90%
-        "\uf008e"  // 󰂎 100%
+        "󰂅", // 󰂅 10%
+        "󰂆", // 󰂆 20%
+        "󰂇", // 󰂇 30%
+        "󰂈", // 󰂈 40%
+        "󰂉", // 󰂉 50%
+        "󰂊", // 󰂊 60%
+        "󰂋", // 󰂋 70%
+        "󰂌", // 󰂌 80%
+        "󰂍", // 󰂍 90%
+        "󰂎" // 󰂎 100%
     ]
 
     // Color by remaining charge (Tokyo Night palette).

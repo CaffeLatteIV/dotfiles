@@ -77,6 +77,7 @@ PanelWindow {
         VramWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
+        // Battery charge % + charging state (green/blue/gold/red by level).
         BatteryWidget {
             anchors.verticalCenter: parent.verticalCenter
         }

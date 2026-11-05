@@ -77,6 +77,9 @@ PanelWindow {
         VramWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
+        BatteryWidget {
+            anchors.verticalCenter: parent.verticalCenter
+        }
         NetworkWidget {
             anchors.verticalCenter: parent.verticalCenter
         }
